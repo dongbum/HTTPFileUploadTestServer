@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from flask import Flask, request, url_for
+from fuploader.controller import index, upload
 from fuploader.module.logger import Log
 
 def print_settings(config):
