@@ -20,7 +20,7 @@ def url_for_other_page(page):
 def create_app(argv):
     fupload_app = Flask(__name__, instance_relative_config=True)
 
-    fupload_app.config.from_pyfile(str(argv[1]), silent=True)
+    fupload_app.config.from_pyfile('config.cfg')
 
     Log.init(log_path=str(fupload_app.config['LOG']))
     Log.info("-------------------- Starting File Upload Server... --------------------")
