@@ -25,10 +25,6 @@ class ConfigManager:
         Log.info('===================================================================')
         Log.info('settings for FileUploadTest-Server')
         Log.info('===================================================================')
-
-        for key, value in self.config.items():
-            Log.info('%s=%s' % (key, value))
-
         Log.info('PORT=%s' % self.PORT)
         Log.info('LOG=%s' % self.LOG)
         Log.info('UPLOAD_DIR=%s' % self.UPLOAD_DIR)
