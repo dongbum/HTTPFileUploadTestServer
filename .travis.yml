@@ -9,6 +9,6 @@ install:
   - pip install nose-exclude
 script:
   # - coverage run runserver.py
-  - nosetests --with-coverage --exclude-dir=/home
+  - nosetests --with-coverage --cover-erase --cover-package=fuploader
 after_success:
   - coveralls

@@ -2,7 +2,6 @@
 
 import os
 import logging
-from logging import getLogger, handlers, Formatter
 
 class Log:
     __log_level_map = {
@@ -17,6 +16,8 @@ class Log:
 
     @staticmethod
     def init(logger_name='fileupload_server_log', log_level='debug', log_path='logs'):
+        from logging import getLogger, handlers, Formatter
+
         Log.__my_logger = getLogger(logger_name)
         Log.__my_logger.setLevel(Log.__log_level_map.get(log_level, 'warn'))
 
