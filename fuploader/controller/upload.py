@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import os
-from flask import jsonify, request, render_template
+from flask import request, render_template
 from werkzeug.utils import secure_filename
 from fuploader.fuploader_blueprint import fuploader
 from fuploader.module.configmanager import ConfigManager
@@ -22,7 +22,11 @@ def upload():
 
             save_filename = os.path.join(upload_dir, secure_filename(upload_file.filename))
             upload_file.save(save_filename)
-        except:
+        except Exception as ex:
             return render_template('upload_result.html', result="FAIL", filename=save_filename)
+        except BaseException:
+            return render_template('upload_result.html', result="FAIL", filename=save_filename)
+        except SystemExit:
+            pass
 
     return render_template('upload_result.html', result="SUCCESS", filename=save_filename)

@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 
 import os
-import logging
+from flask import logging
 from logging import getLogger, handlers, Formatter
+
 
 class Log:
     __log_level_map = {
