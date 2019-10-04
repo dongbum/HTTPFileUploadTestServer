@@ -1,19 +1,21 @@
 # -*- coding: utf-8 -*-
 
 import os
-from flask import jsonify, request, current_app, render_template
+from flask import jsonify, request, render_template
 from werkzeug.utils import secure_filename
 from fuploader.fuploader_blueprint import fuploader
+from fuploader.module.configmanager import ConfigManager
 
 @fuploader.route('/upload', methods=['GET', 'POST'])
 def upload():
+    configmanager = ConfigManager()
     if request.method == 'GET':
         return render_template('upload.html')
     elif request.method == 'POST':
         save_filename = ''
         try:
             upload_file = request.files['file']
-            upload_dir = current_app.config['UPLOAD_DIR']
+            upload_dir = configmanager.UPLOAD_DIR
 
             if not os.path.exists(upload_dir):
                 os.makedirs(upload_dir)
